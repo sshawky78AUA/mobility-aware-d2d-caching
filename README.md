@@ -55,3 +55,7 @@ python rfigs.py ../figs      # draws Figs. 4-8 as PDF
 ## Citation
 
 If you use this code, please cite the paper above.
+
+## License
+
+MIT. See `LICENSE`. The Foursquare data keeps its own terms from the dataset authors.
