@@ -1,12 +1,15 @@
-% EXP3_GAP  Coded versus whole-copy placement on random instances (Table III).
-Ns = 3:8; trials = 500; frac = zeros(size(Ns)); avgGap = frac; maxGap = frac; gre = frac;
+% EXP3_GAP  Coded versus whole-copy placement on random instances (Table 3).
+% ---- Parameters (edit here) ----  (r is drawn in [0, rmax], L in [Lmin, Lmax])
+Ns = 3:8; trials = 500; rmax = 0.8; Lmin = 2; Lmax = 5;
+% ----------------------------------
+frac = zeros(size(Ns)); avgGap = frac; maxGap = frac; gre = frac;
 rng(5);
 for i = 1:numel(Ns)
     N = Ns(i); gaps = zeros(trials, 1); gg = gaps;
     for k = 1:trials
-        L = randi([2 5]); th = zeros(1, N, L + 1);
+        L = randi([Lmin Lmax]); th = zeros(1, N, L + 1);
         for n = 1:N, v = -log(rand(1, L + 1)); v(1) = v(1) * rand; th(1, n, :) = v / sum(v); end
-        P = reshape(rand(1, N), [1 N 1]); r = rand * 0.8;
+        P = reshape(rand(1, N), [1 N 1]); r = rand * rmax;
         [a, Gm] = user_weights(th, P);
         [~, C1] = central_lp(a, Gm, 1, r);
         C2 = sp_cost(best_integral(a, Gm, 1, r), a, Gm, 1, r);

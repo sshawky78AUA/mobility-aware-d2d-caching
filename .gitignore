@@ -6,3 +6,4 @@ octave-workspace
 .DS_Store
 figs/*
 !figs/.gitkeep
+trace_sim/runs/

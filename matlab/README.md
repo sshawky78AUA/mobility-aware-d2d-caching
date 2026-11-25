@@ -1,6 +1,17 @@
 # MATLAB code: Mobility-Aware D2D Caching
 
 Run `run_all` from this folder (Optimization Toolbox: `linprog`, `intlinprog`).
+
+## Changing the parameters
+
+- Each experiment file starts with its parameters (number of users, trials, reward range, ...).
+  Edit them and rerun the file, e.g. `exp3_gap` with `Ns = 3:10` or `trials = 1000`.
+- `exp0_example` (Fig. 3) takes the interests `p` and the location profiles `th` of the three users at the top.
+- `default_params.m` holds the synthetic scenario used by `exp1`-`exp7` (users, items, locations,
+  communities, mobility rate, Zipf exponent, demand levels). Changing it changes all of them.
+- The core functions (`central_lp`, `greedy_integral`, `potential_ne`, `ne_milp`, ...) take the
+  location profiles `theta(t,n,l)` and interests `P(t,n,m)` as inputs, so they can be called on
+  any scenario you build.
 The code also runs in GNU Octave (falls back to `glpk`). Every experiment saves
 its data to `../figs/expN.mat` before plotting.
 
@@ -35,4 +46,5 @@ its data to `../figs/expN.mat` before plotting.
 | `estimate_profiles` | profiles learned from D observed periods |
 | `method_style`, `plot_method`, `add_legend`, `style_axes`, `save_fig` | common figure style |
 | `exp0_example` | worked example of Section V-E (Fig. 3) |
-| `exp1` ... `exp7` | simulation figures of Section VI and Table IV |
+| `exp3_gap` | Table 3 of the paper (coded versus whole-copy placement, Section VI-A) |
+| `exp1`, `exp2`, `exp4` ... `exp7` | additional synthetic experiments with the Markov mobility model (not in the paper) |

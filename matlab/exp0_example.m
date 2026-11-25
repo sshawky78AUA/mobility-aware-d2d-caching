@@ -3,9 +3,12 @@
 %   (b) decentralized equilibria versus r' (fair, potential, SP-best/worst)
 %       and the validity of the earlier proportional rule;
 %   (c) SP cost of both schemes on a common reward axis, y_o = 1.
-clear; S = 1; N = 3; yo = 1;
+clear;
+% ---- Parameters (edit here) ----
+S = 1; N = 3; yo = 1;                    % item size, users, off-peak price
 p  = [0.5 0.4 0.3];                       % interests p_n (T = 1)
 th = [0.2 0.6 0.2; 0.1 0.5 0.4; 0.2 0.3 0.5];   % [private, C, D] per user
+% --------------------------------
 Gm = enum_groups(N);
 theta = reshape(th, [1 N 3]); P = reshape(p, [1 N 1]);
 [a, Gm] = user_weights(theta, P, Gm); am = a(:, :, 1); W = sum(am, 1)';
